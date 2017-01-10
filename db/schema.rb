@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170109211520) do
     t.string   "original_url"
     t.string   "short_url"
     t.string   "short_code"
+    t.string   "root"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

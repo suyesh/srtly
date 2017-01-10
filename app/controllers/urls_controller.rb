@@ -17,7 +17,7 @@ class UrlsController < ApplicationController
 
     def create
         @url = Url.new(url_params)
-
+        @url.root = "#{request.base_url}/"
         respond_to do |format|
             if @url.save
                 format.html { redirect_to @url, notice: 'Url was successfully created.' }
@@ -52,6 +52,8 @@ class UrlsController < ApplicationController
 
     def srtly
         @url = Url.find_by(short_code: params[:short_code])
+        # @url.referer = request.referer
+        # @url.save
         redirect_to @url.original_url
     end
 
@@ -62,6 +64,6 @@ class UrlsController < ApplicationController
     end
 
     def url_params
-        params.require(:url).permit(:original_url, :short_url, :short_code)
+        params.require(:url).permit(:original_url, :short_url)
     end
 end
