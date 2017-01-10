@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resource :url
+  resources :urls
   root to: 'urls#index'
 
-  get '/:short_url' => 'urls#srtly'
+  get '/:short_code' => 'urls#srtly', as: :srtly
 end
